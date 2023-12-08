@@ -12,74 +12,41 @@ const SectionSystem = () => {
   const grid_size = 3;
 
   const [img2imgImages, setImg2ImgImages] = useState([]);
-
-  useEffect(() => {
-    const fetchGenImages = async () => {
-      try {
-        const { data, error } = await supabase
-          .from("aria01")
-          .select("img2imggeneration")
-          .eq("id", 17);
-
-        if (error) {
-          throw error;
-        }
-
-        if (data) {
-          console.log("Supabase, Fetched Data for img2imggeneration:", data);
-
-          // Extract URLs from the img2imggeneration column
-          const imageUrls = data.flatMap((item) => item.img2imggeneration);
-
-          console.log("Image URLs from img2imggeneration:", imageUrls);
-
-          setImg2ImgImages(imageUrls);
-          console.log("img2imgImages");
-          console.log(img2imgImages);
-        }
-      } catch (error) {
-        console.error("Error fetching data: ", error);
-      }
-    };
-
-    fetchGenImages();
-  }, []);
-
   const [images, setImages] = useState([]);
 
-  useEffect(() => {
-    // Define an async function inside useEffect
-    const fetchImages = async () => {
-      try {
-        // Fetch data from Supabase
-        const { data, error } = await supabase
-          .from("aria01")
-          .select("suggested_products")
-          .eq("id", 17); // Filter to get the row where id is 17
-        // .limit(grid_size);
+  // Separate the fetch function from the useEffect
+  const fetchImages = async (imgType, state_variable) => {
+    try {
+      const { data, error } = await supabase
+        .from("aria01")
+        .select(imgType)
+        .eq("id", 17);
 
-        if (error) {
-          throw error;
-        }
-
-        if (data) {
-          console.log("Fetched Data:", data); // Log the fetched data
-
-          // Extract URLs and update state
-          // const imageUrls = data.map((item) => item.suggested_products);
-          const imageUrls = data.flatMap((item) => item.suggested_products);
-
-          console.log("Image URLs:", imageUrls); // Log the extracted URLs
-
-          setImages(imageUrls);
-        }
-      } catch (error) {
-        console.error("Error fetching data: ", error);
+      if (error) {
+        throw error;
       }
-    };
 
-    // Call the async function
-    fetchImages();
+      if (data) {
+        console.log("Supabase, Fetched Data for img2imggeneration:", data);
+
+        // Extract URLs from the img2imggeneration column
+        const imageUrls = data.flatMap((item) => item[imgType]);
+        console.log("Image URLs from img2imggeneration:", imageUrls);
+
+        state_variable(imageUrls);
+      }
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
+  };
+
+  // useEffect with an empty dependency array to run only once
+  useEffect(() => {
+    fetchImages("img2imggeneration", setImg2ImgImages);
+  }, []); // Empty dependency array means this effect runs once after the first render
+
+  useEffect(() => {
+    fetchImages("suggested_products", setImages);
   }, []);
 
   return (
@@ -98,9 +65,11 @@ const SectionSystem = () => {
         <div className="flex justify-center md:block">
           <div className="grid md:grid-cols-3 gap-8 md:gap-12">
             {images.slice(0, grid_size).map((imgSrc, index) => (
-              <div className="relative w-96 h-96 flex items-center justify-center overflow-hidden">
+              <div
+                key={index}
+                className="relative w-96 h-96 flex items-center justify-center overflow-hidden"
+              >
                 <Image
-                  key={index}
                   src={imgSrc || imgplaceholder}
                   alt={`Image ${index + 1}`}
                   className="object-cover min-w-full min-h-full"
@@ -121,34 +90,22 @@ const SectionSystem = () => {
             Cool Picks Just for Me
           </p>
         </div>
-        <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-          <div className="relative w-100 h-100 flex items-center justify-center">
-            <Image
-              src={imgplaceholder || imgplaceholder}
-              alt=""
-              width={300} // Adjust this to your desired square size
-              height={300} // Adjust this to your desired square size
-              objectFit="cover" // This will crop the image as needed to fit the square container
-            />
-          </div>
-          <div className="relative w-100 h-100 flex items-center justify-center">
-            <Image
-              src={imgplaceholder || imgplaceholder}
-              alt=""
-              width={300} // Adjust this to your desired square size
-              height={300} // Adjust this to your desired square size
-              objectFit="cover" // This will crop the image as needed to fit the square container
-            />
-          </div>
-
-          <div className="relative w-100 h-100 flex items-center justify-center">
-            <Image
-              src={imgplaceholder || imgplaceholder}
-              alt=""
-              width={300} // Adjust this to your desired square size
-              height={300} // Adjust this to your desired square size
-              objectFit="cover" // This will crop the image as needed to fit the square container
-            />
+        <div className="flex justify-center md:block">
+          <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+            {images.slice(0, grid_size).map((imgSrc, index) => (
+              <div
+                key={index}
+                className="relative w-96 h-96 flex items-center justify-center overflow-hidden"
+              >
+                <Image
+                  src={imgSrc || imgplaceholder}
+                  alt={`Image ${index + 1}`}
+                  className="object-cover min-w-full min-h-full"
+                  width={384} // Updated to correspond to w-96 in Tailwind (1rem = 16px)
+                  height={384} // Updated to correspond to h-96 in Tailwind
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -165,9 +122,11 @@ const SectionSystem = () => {
         <div className="flex justify-center md:block">
           <div className="grid md:grid-cols-3 gap-8 md:gap-12">
             {img2imgImages.slice(0, grid_size).map((imgSrc, index) => (
-              <div className="relative w-96 h-96 flex items-center justify-center overflow-hidden">
+              <div
+                key={index}
+                className="relative w-96 h-96 flex items-center justify-center overflow-hidden"
+              >
                 <Image
-                  key={index}
                   src={imgSrc || imgplaceholder}
                   alt={`Image ${index + 1}`}
                   className="object-cover min-w-full min-h-full"
