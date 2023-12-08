@@ -13,6 +13,7 @@ const SectionSystem = () => {
 
   const [img2imgImages, setImg2ImgImages] = useState([]);
   const [images, setImages] = useState([]);
+  const [scans, setScanned] = useState([]);
 
   // Separate the fetch function from the useEffect
   const fetchImages = async (imgType, state_variable) => {
@@ -42,6 +43,10 @@ const SectionSystem = () => {
 
   // useEffect with an empty dependency array to run only once
   useEffect(() => {
+    fetchImages("scanned_products", setScanned);
+  }, []);
+
+  useEffect(() => {
     fetchImages("img2imggeneration", setImg2ImgImages);
   }, []); // Empty dependency array means this effect runs once after the first render
 
@@ -54,17 +59,15 @@ const SectionSystem = () => {
       <section className="py-8">
         <div className="mb-4 ">
           <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-pink-400 flex justify-center md:block">
-            My Fashion Faves
+            I Scanned, Magic Happened
           </h1>
-          {/* <h1 className="text-2xl font-bold text-gray-800">My Fashion Faves</h1> */}
           <p className="text-base text-gray-600 mt-2 flex justify-center md:block">
-            {/* <p className="text-base text-gray-600 mt-2"> */}
-            Picked from My Amazon Adventures
+            I See It, I Want It
           </p>
         </div>
         <div className="flex justify-center md:block">
           <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-            {images.slice(0, grid_size).map((imgSrc, index) => (
+            {scans.slice(0, grid_size).map((imgSrc, index) => (
               <div
                 key={index}
                 className="relative w-96 h-96 flex items-center justify-center overflow-hidden"
@@ -84,10 +87,10 @@ const SectionSystem = () => {
       <section className="py-8">
         <div className="mb-4">
           <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400  flex justify-center md:block">
-            I've Got to Get These Quick!
+            My Style, My Rules
           </h1>
           <p className="text-base text-gray-600 mt-2 flex justify-center md:block">
-            Cool Picks Just for Me
+            Tailored Picks Just For My Closet, Enriched with AI
           </p>
         </div>
         <div className="flex justify-center md:block">
@@ -148,8 +151,6 @@ const SectionSystem = () => {
             Finding the Best Deals Near Me or Online
           </p>
         </div>
-        {/* <div className="flex justify-center md:block">
-          <div className="grid md:grid-cols-3 gap-8 md:gap-12"> */}
         <div className="grid md:grid-cols-3 gap-8 md:gap-12">
           <div className="relative w-100 h-100 flex ">
             <MyMapComponent />
