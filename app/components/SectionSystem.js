@@ -68,17 +68,19 @@ const SectionSystem = () => {
         <div className="flex justify-center md:block">
           <div className="grid md:grid-cols-3 gap-8 md:gap-12">
             {scans.slice(0, grid_size).map((imgSrc, index) => (
-              <div
-                key={index}
-                className="relative w-96 h-96 flex items-center justify-center overflow-hidden"
-              >
-                <Image
-                  src={imgSrc || imgplaceholder}
-                  alt={`Image ${index + 1}`}
-                  className="object-cover min-w-full min-h-full"
-                  width={384} // Updated to correspond to w-96 in Tailwind (1rem = 16px)
-                  height={384} // Updated to correspond to h-96 in Tailwind
-                />
+              <div key={index} className="flex flex-col items-center">
+                <div className="relative w-96 h-96 flex items-center justify-center overflow-hidden">
+                  <Image
+                    src={imgSrc || imgplaceholder}
+                    alt={`Image ${index + 1}`}
+                    className="object-cover min-w-full min-h-full"
+                    width={384} // Updated to correspond to w-96 in Tailwind (1rem = 16px)
+                    height={384} // Updated to correspond to h-96 in Tailwind
+                  />
+                </div>
+                <button className="mt-4 py-2 px-4 bg-gradient-to-r from-pink-600 to-pink-400 text-white font-bold rounded shadow-lg hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-opacity-50">
+                  Buy
+                </button>
               </div>
             ))}
           </div>
@@ -96,17 +98,19 @@ const SectionSystem = () => {
         <div className="flex justify-center md:block">
           <div className="grid md:grid-cols-3 gap-8 md:gap-12">
             {images.slice(0, grid_size).map((imgSrc, index) => (
-              <div
-                key={index}
-                className="relative w-96 h-96 flex items-center justify-center overflow-hidden"
-              >
-                <Image
-                  src={imgSrc || imgplaceholder}
-                  alt={`Image ${index + 1}`}
-                  className="object-cover min-w-full min-h-full"
-                  width={384} // Updated to correspond to w-96 in Tailwind (1rem = 16px)
-                  height={384} // Updated to correspond to h-96 in Tailwind
-                />
+              <div key={index} className="flex flex-col items-center">
+                <div className="relative w-96 h-96 flex items-center justify-center overflow-hidden">
+                  <Image
+                    src={imgSrc || imgplaceholder}
+                    alt={`Image ${index + 1}`}
+                    className="object-cover min-w-full min-h-full"
+                    width={384} // Updated to correspond to w-96 in Tailwind (1rem = 16px)
+                    height={384} // Updated to correspond to h-96 in Tailwind
+                  />
+                </div>
+                <button className="mt-4 py-2 px-4 bg-gradient-to-r from-pink-600 to-pink-400 text-white font-bold rounded shadow-lg hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-opacity-50">
+                  Buy
+                </button>
               </div>
             ))}
           </div>
@@ -125,17 +129,19 @@ const SectionSystem = () => {
         <div className="flex justify-center md:block">
           <div className="grid md:grid-cols-3 gap-8 md:gap-12">
             {img2imgImages.slice(0, grid_size).map((imgSrc, index) => (
-              <div
-                key={index}
-                className="relative w-96 h-96 flex items-center justify-center overflow-hidden"
-              >
-                <Image
-                  src={imgSrc || imgplaceholder}
-                  alt={`Image ${index + 1}`}
-                  className="object-cover min-w-full min-h-full"
-                  width={384} // Updated to correspond to w-96 in Tailwind (1rem = 16px)
-                  height={384} // Updated to correspond to h-96 in Tailwind
-                />
+              <div key={index} className="flex flex-col items-center">
+                <div className="relative w-96 h-96 flex items-center justify-center overflow-hidden">
+                  <Image
+                    src={imgSrc || imgplaceholder}
+                    alt={`Image ${index + 1}`}
+                    className="object-cover min-w-full min-h-full"
+                    width={384} // Updated to correspond to w-96 in Tailwind (1rem = 16px)
+                    height={384} // Updated to correspond to h-96 in Tailwind
+                  />
+                </div>
+                <button className="mt-4 py-2 px-4 bg-gradient-to-r from-pink-600 to-pink-400 text-white font-bold rounded shadow-lg hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-opacity-50">
+                  Share
+                </button>
               </div>
             ))}
           </div>
