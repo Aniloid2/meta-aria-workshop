@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0; /* Black foreground for better visibility */
+  --background-rgb: 255, 255, 255; /* White background */
+}
+
+body,
+.navbar {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Elegant, readable font */
+  color: rgb(var(--foreground-rgb)); /* Applying black color to text */
+  background: rgb(var(--background-rgb)); /* White background */
+  font-size: 16px; /* Adjust as needed */
+  line-height: 1.6; /* Adjust for readability */
+  -webkit-font-smoothing: antialiased; /* For WebKit browsers */
+  -moz-osx-font-smoothing: grayscale; /* For Firefox on macOS */
+}
