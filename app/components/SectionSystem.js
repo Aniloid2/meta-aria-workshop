@@ -77,8 +77,11 @@ const SectionSystem = () => {
                     width={384} // Updated to correspond to w-96 in Tailwind (1rem = 16px)
                     height={384} // Updated to correspond to h-96 in Tailwind
                   />
+                  <div className="absolute bottom-0 w-full h-1/5 bg-gradient-to-r from-pink-600 to-pink-400 opacity-70 flex items-center justify-center">
+                    <p className="text-lg font-semibold text-white">$59.99</p>
+                  </div>
                 </div>
-                <button className="mt-4 py-2 px-4 bg-gradient-to-r from-pink-600 to-pink-400 text-white font-bold rounded shadow-lg hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-opacity-50">
+                <button className="mt-4 py-2 px-4 w-full md:w-auto bg-gradient-to-r from-pink-600 to-pink-400 text-white font-bold rounded shadow-lg hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-opacity-50">
                   Buy
                 </button>
               </div>
@@ -107,8 +110,12 @@ const SectionSystem = () => {
                     width={384} // Updated to correspond to w-96 in Tailwind (1rem = 16px)
                     height={384} // Updated to correspond to h-96 in Tailwind
                   />
+                  <div className="absolute bottom-0 w-full h-1/5 bg-gradient-to-r from-pink-600 to-pink-400 opacity-70 flex items-center justify-center">
+                    <p className="text-lg font-semibold text-white">$49.99</p>
+                  </div>
                 </div>
-                <button className="mt-4 py-2 px-4 bg-gradient-to-r from-pink-600 to-pink-400 text-white font-bold rounded shadow-lg hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-opacity-50">
+
+                <button className="mt-4 py-2 px-4 w-full md:w-auto bg-gradient-to-r from-pink-600 to-pink-400 text-white font-bold rounded shadow-lg hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-opacity-50">
                   Buy
                 </button>
               </div>
@@ -139,7 +146,7 @@ const SectionSystem = () => {
                     height={384} // Updated to correspond to h-96 in Tailwind
                   />
                 </div>
-                <button className="mt-4 py-2 px-4 bg-gradient-to-r from-pink-600 to-pink-400 text-white font-bold rounded shadow-lg hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-opacity-50">
+                <button className="mt-4 py-2 px-4 w-full md:w-auto bg-gradient-to-r from-pink-600 to-pink-400 text-white font-bold rounded shadow-lg hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-opacity-50">
                   Share
                 </button>
               </div>
